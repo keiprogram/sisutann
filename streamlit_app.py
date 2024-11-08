@@ -2,11 +2,9 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 from PIL import Image
-import base64
 
 # アプリの設定
-st.set_page_config(page_title="Enhanced English Vocabulary Test システム英単語バージョン", page_icon='sisutannaikonn.png')
-
+st.set_page_config(page_title="Enhanced English Vocabulary Test", page_icon='sisutannaikonn.png')
 
 # カスタムCSSでUIを改善
 st.markdown(
@@ -65,6 +63,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 # Excelデータを読み込む関数
 @st.cache_data
 def load_data():
@@ -79,6 +78,9 @@ st.sidebar.title("テスト設定")
 test_type = st.sidebar.radio("テスト形式を選択", ['英語→日本語', '日本語→英語'])
 ranges = [f"{i*100+1}-{(i+1)*100}" for i in range(len(words_df) // 100 + 1)]
 selected_range = st.sidebar.selectbox("出題範囲を選択", ranges)
+
+# 出題問題数の選択
+num_questions = st.sidebar.slider("出題問題数を選択", 10, 50, 50)
 
 # 選択した範囲のデータを抽出
 range_start, range_end = map(int, selected_range.split('-'))
@@ -96,7 +98,8 @@ if st.button('テストを開始する'):
         'wrong_answers': [],
     })
 
-    selected_questions = filtered_words_df.sample(min(50, len(filtered_words_df))).reset_index(drop=True)
+    # ランダムに問題を選択（選択した問題数で）
+    selected_questions = filtered_words_df.sample(min(num_questions, len(filtered_words_df))).reset_index(drop=True)
     st.session_state.update({
         'selected_questions': selected_questions,
         'total_questions': len(selected_questions),
@@ -127,7 +130,7 @@ def update_question(answer):
     if answer == correct_answer:
         st.session_state.correct_answers += 1
     else:
-        st.session_state.wrong_answers.append((
+        st.session_state.wrong_answers.append(( 
             st.session_state.current_question_data['No.'],
             question_word,
             correct_answer
@@ -179,6 +182,11 @@ def display_results():
 if 'test_started' in st.session_state and not st.session_state.finished:
     st.subheader(f"問題 {st.session_state.current_question + 1} / {st.session_state.total_questions} (問題番号: {st.session_state.current_question_data['No.']})")
     st.subheader(f"{st.session_state.current_question_data['単語']}" if test_type == '英語→日本語' else f"{st.session_state.current_question_data['語の意味']}")
+    
+    # プログレスバーを表示
+    progress = (st.session_state.current_question + 1) / st.session_state.total_questions
+    st.progress(progress)
+    
     st.markdown('<div class="choices-container">', unsafe_allow_html=True)
     for idx, option in enumerate(st.session_state.options):
         st.button(option, key=f"button_{st.session_state.current_question}_{idx}", on_click=update_question, args=(option,))
