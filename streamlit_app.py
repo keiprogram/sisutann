@@ -94,6 +94,7 @@ filtered_words_df = words_df[(words_df['No.'] >= range_start) & (words_df['No.']
 
 st.image("test.png", width=500)
 st.title("シス単英単語テスト")
+st.text("システム英単語から英単語テストができます")
 
 # テスト開始ボタン
 if st.button('テストを開始する'):
@@ -104,6 +105,8 @@ if st.button('テストを開始する'):
         'finished': False,
         'wrong_answers': [],
     })
+
+st.text("進捗度")
 
     # ランダムに問題を選択（選択した問題数で）
     selected_questions = filtered_words_df.sample(min(num_questions, len(filtered_words_df))).reset_index(drop=True)
