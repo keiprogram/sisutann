@@ -5,7 +5,7 @@ from PIL import Image
 import base64
 
 # アプリの設定
-st.set_page_config(page_title="Enhanced English Vocabulary Test システム英単語バージョン",)
+st.set_page_config(page_title="Enhanced English Vocabulary Test システム英単語バージョン")
 
 # カスタムCSSでUIを改善
 st.markdown(
@@ -13,20 +13,41 @@ st.markdown(
     <style>
     body {
         font-family: 'Arial', sans-serif;
+        background-color: #5d79ba; /* メインテーマカラー */
+        color: #ffffff; /* テキストの基本色 */
     }
-    .header {
-        color: #ffae4b;
-        text-align: center;
+    .header, .choices-container button {
+        color: #9c944f; /* サブテーマカラー */
+    }
+    .choices-container button {
+        background-color: #ffffff;
+        border: 2px solid #9c944f;
+        margin: 5px;
+        padding: 10px;
+        border-radius: 5px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+    .choices-container button:hover {
+        background-color: #9c944f;
+        color: #ffffff;
     }
     .test-container {
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding: 20px;
         margin: 20px auto;
-        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
-    .choices-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-top: 20px;
+    .results-table {
+        margin: 20px auto;
+        border-collapse: collapse;
+        width: 100%;
+    }
+    .results-table th, .results-table td {
+        border: 1px solid #9c944f;
+        padding: 8px;
+        text-align: center;
     }
     </style>
     """,
@@ -62,9 +83,7 @@ if st.button('テストを開始する'):
         'wrong_answers': [],
     })
 
-    # データの件数を確認し、50件未満の場合は全てのデータを使用
-    num_samples = min(50, len(filtered_words_df))
-    selected_questions = filtered_words_df.sample(num_samples).reset_index(drop=True)
+    selected_questions = filtered_words_df.sample(min(50, len(filtered_words_df))).reset_index(drop=True)
     st.session_state.update({
         'selected_questions': selected_questions,
         'total_questions': len(selected_questions),
