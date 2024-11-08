@@ -93,6 +93,7 @@ range_start, range_end = map(int, selected_range.split('-'))
 filtered_words_df = words_df[(words_df['No.'] >= range_start) & (words_df['No.'] <= range_end)].sort_values(by='No.')
 
 st.image("test.png", width=500)
+st.title("シス単バージョン英単語アプリ!!!!!!!")
 
 # テスト開始ボタン
 if st.button('テストを開始する'):
