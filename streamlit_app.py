@@ -5,7 +5,8 @@ from PIL import Image
 import base64
 
 # アプリの設定
-st.set_page_config(page_title="Enhanced English Vocabulary Test システム英単語バージョン")
+st.set_page_config(page_title="Enhanced English Vocabulary Test システム英単語バージョン", page_icon='sisutannaikonn.png')
+
 
 # カスタムCSSでUIを改善
 st.markdown(
