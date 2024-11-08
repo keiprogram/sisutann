@@ -14,14 +14,14 @@ st.markdown(
     body {
         font-family: 'Arial', sans-serif;
         background-color: #5d79ba; /* メインテーマカラー */
-        color: #ffffff; /* テキストの基本色 */
+        color: #5d79ba; /* テキストの色 */
     }
     .header, .choices-container button {
-        color: #9c944f; /* サブテーマカラー */
+        color: #5d79ba; /* テキストの色 */
     }
     .choices-container button {
         background-color: #9c944f;
-        color: #ffffff;
+        color: #5d79ba; /* ボタンの文字色 */
         border: 2px solid #5d79ba;
         margin: 5px;
         padding: 10px;
@@ -31,7 +31,7 @@ st.markdown(
     }
     .choices-container button:hover {
         background-color: #ffffff;
-        color: #9c944f;
+        color: #5d79ba; /* ホバー時のボタン文字色 */
     }
     .test-container {
         background-color: #ffffff;
@@ -45,11 +45,11 @@ st.markdown(
         border-collapse: collapse;
         width: 100%;
         background-color: #ffffff;
-        color: #5d79ba;
+        color: #5d79ba; /* テーブルの文字色 */
     }
     .results-table th {
         background-color: #9c944f;
-        color: #ffffff;
+        color: #5d79ba; /* テーブルヘッダーの文字色 */
         padding: 10px;
     }
     .results-table td {
@@ -175,7 +175,7 @@ def display_results():
 
 # 問題表示ロジック
 if 'test_started' in st.session_state and not st.session_state.finished:
-    st.subheader(f"問題 {st.session_state.current_question + 1} / {st.session_state.total_questions} (シス単問題番号: {st.session_state.current_question_data['No.']})")
+    st.subheader(f"問題 {st.session_state.current_question + 1} / {st.session_state.total_questions} (エクセル問題番号: {st.session_state.current_question_data['No.']})")
     st.subheader(f"{st.session_state.current_question_data['単語']}" if test_type == '英語→日本語' else f"{st.session_state.current_question_data['語の意味']}")
     st.markdown('<div class="choices-container">', unsafe_allow_html=True)
     for idx, option in enumerate(st.session_state.options):
