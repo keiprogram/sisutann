@@ -62,7 +62,9 @@ if st.button('テストを開始する'):
         'wrong_answers': [],
     })
 
-    selected_questions = filtered_words_df.sample(50).reset_index(drop=True)
+    # データの件数を確認し、50件未満の場合は全てのデータを使用
+    num_samples = min(50, len(filtered_words_df))
+    selected_questions = filtered_words_df.sample(num_samples).reset_index(drop=True)
     st.session_state.update({
         'selected_questions': selected_questions,
         'total_questions': len(selected_questions),
