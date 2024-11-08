@@ -85,6 +85,8 @@ selected_range = st.sidebar.selectbox("出題範囲を選択", ranges)
 range_start, range_end = map(int, selected_range.split('-'))
 filtered_words_df = words_df[(words_df['No.'] >= range_start) & (words_df['No.'] <= range_end)].sort_values(by='No.')
 
+st.image("test.png", width=500)
+
 # テスト開始ボタン
 if st.button('テストを開始する'):
     st.session_state.update({
