@@ -49,7 +49,7 @@ st.markdown(
     }
     .results-table th {
         background-color: #5d79ba;
-        color: #5d79ba; /* テーブルヘッダーの文字色 */
+        color: #9c944f; /* テーブルヘッダーの文字色 */
         padding: 10px;
     }
     .results-table td {
