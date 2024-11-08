@@ -36,7 +36,7 @@ st.markdown(
 # Excelデータを読み込む関数
 @st.cache_data
 def load_data():
-    data = pd.read_excel("/mnt/data/シスタン.xlsx", sheet_name="Sheet1")
+    data = pd.read_excel("シスタン.xlsx", sheet_name="Sheet1")
     data.columns = ["No.", "単語", "語の意味"]  # カラム名を設定
     return data
 
