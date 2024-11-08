@@ -175,7 +175,7 @@ def display_results():
 
 # 問題表示ロジック
 if 'test_started' in st.session_state and not st.session_state.finished:
-    st.subheader(f"問題 {st.session_state.current_question + 1} / {st.session_state.total_questions} (エクセル問題番号: {st.session_state.current_question_data['No.']})")
+    st.subheader(f"問題 {st.session_state.current_question + 1} / {st.session_state.total_questions} (問題番号: {st.session_state.current_question_data['No.']})")
     st.subheader(f"{st.session_state.current_question_data['単語']}" if test_type == '英語→日本語' else f"{st.session_state.current_question_data['語の意味']}")
     st.markdown('<div class="choices-container">', unsafe_allow_html=True)
     for idx, option in enumerate(st.session_state.options):
