@@ -27,7 +27,7 @@ st.markdown(
         margin: 5px;
         padding: 10px;
         border-radius: 5px;
-        font-weight: bold;
+        font-weight: bold; /* 太字に設定 */
         cursor: pointer;
     }
     .choices-container button:hover {
@@ -65,7 +65,6 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-
 # Excelデータを読み込む関数
 @st.cache_data
 def load_data():
@@ -85,7 +84,7 @@ selected_range = st.sidebar.selectbox("出題範囲を選択", ranges)
 range_start, range_end = map(int, selected_range.split('-'))
 filtered_words_df = words_df[(words_df['No.'] >= range_start) & (words_df['No.'] <= range_end)].sort_values(by='No.')
 
-st.image("test.png", width=500)
+st.image("test.png", width=50)
 
 # テスト開始ボタン
 if st.button('テストを開始する'):
