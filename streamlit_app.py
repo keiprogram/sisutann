@@ -59,6 +59,12 @@ st.markdown(
     .stProgress > div > div > div > div {
         background-color: #9c944f; /* プログレスバーの色 */
     }
+    .stSidebar .stRadio label {
+        color: #9c944f; /* ラジオボタンの色 */
+    }
+    .stSidebar .stRadio input[type="radio"]:checked + label {
+        color: #5d79ba; /* 選択されたラジオボタンの色 */
+    }
     </style>
     """,
     unsafe_allow_html=True
@@ -75,7 +81,7 @@ words_df = load_data()
 
 # サイドバー設定
 st.sidebar.title("テスト設定")
-test_type = st.sidebar.radio("テスト形式を選択", ['英語→日本語', '日本語→英語'])
+test_type = st.sidebar.radio("テスト形式を選択", ['英語→日本語', '日本語→英語'], key="test_type")
 ranges = [f"{i*100+1}-{(i+1)*100}" for i in range(len(words_df) // 100 + 1)]
 selected_range = st.sidebar.selectbox("出題範囲を選択", ranges)
 
