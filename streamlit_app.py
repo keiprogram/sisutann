@@ -85,21 +85,7 @@ selected_range = st.sidebar.selectbox("出題範囲を選択", ranges)
 range_start, range_end = map(int, selected_range.split('-'))
 filtered_words_df = words_df[(words_df['No.'] >= range_start) & (words_df['No.'] <= range_end)].sort_values(by='No.')
 
-# カスタムCSSで画像の角を丸めるスタイルを追加
-st.markdown(
-    """
-    <style>
-    .rounded-image {
-        border-radius: 15px;  /* 画像の角を丸くする */
-        width: 100%;  /* 画像の幅を調整 */
-    }
-    </style>
-    """, 
-    unsafe_allow_html=True
-)
-
-# 画像を表示（CSSクラス「rounded-image」を適用）
-st.markdown('<img src="test.png" class="rounded-image">', unsafe_allow_html=True)
+st.image("test.png", width=500)
 
 # テスト開始ボタン
 if st.button('テストを開始する'):
