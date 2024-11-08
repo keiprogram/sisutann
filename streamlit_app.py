@@ -13,16 +13,16 @@ st.markdown(
     <style>
     body {
         font-family: 'Arial', sans-serif;
-        background-color: #5d79ba; /* メインテーマカラー */
-        color: #5d79ba; /* テキストの色 */
+        background-color: #9c944f; /* メインテーマカラー */
+        color: #9c944f; /* テキストの色 */
     }
     .header, .choices-container button {
-        color: #5d79ba; /* テキストの色 */
+        color: #9c944f; /* テキストの色 */
     }
     .choices-container button {
-        background-color: #9c944f;
-        color: #5d79ba; /* ボタンの文字色 */
-        border: 2px solid #5d79ba;
+        background-color: #5d79ba;
+        color: #9c944f; /* ボタンの文字色 */
+        border: 2px solid #9c944f;
         margin: 5px;
         padding: 10px;
         border-radius: 5px;
@@ -31,7 +31,7 @@ st.markdown(
     }
     .choices-container button:hover {
         background-color: #ffffff;
-        color: #5d79ba; /* ホバー時のボタン文字色 */
+        color: #9c944f; /* ホバー時のボタン文字色 */
     }
     .test-container {
         background-color: #ffffff;
@@ -45,20 +45,20 @@ st.markdown(
         border-collapse: collapse;
         width: 100%;
         background-color: #ffffff;
-        color: #5d79ba; /* テーブルの文字色 */
+        color: #9c944f; /* テーブルの文字色 */
     }
     .results-table th {
-        background-color: #9c944f;
+        background-color: #5d79ba;
         color: #5d79ba; /* テーブルヘッダーの文字色 */
         padding: 10px;
     }
     .results-table td {
-        border: 1px solid #9c944f;
+        border: 1px solid #5d79ba;
         padding: 8px;
         text-align: center;
     }
     .stProgress > div > div > div > div {
-        background-color: #9c944f; /* プログレスバーの色 */
+        background-color: #5d79ba; /* プログレスバーの色 */
     }
     </style>
     """,
