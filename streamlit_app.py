@@ -20,8 +20,9 @@ st.markdown(
         color: #9c944f; /* サブテーマカラー */
     }
     .choices-container button {
-        background-color: #ffffff;
-        border: 2px solid #9c944f;
+        background-color: #9c944f;
+        color: #ffffff;
+        border: 2px solid #5d79ba;
         margin: 5px;
         padding: 10px;
         border-radius: 5px;
@@ -29,8 +30,8 @@ st.markdown(
         cursor: pointer;
     }
     .choices-container button:hover {
-        background-color: #9c944f;
-        color: #ffffff;
+        background-color: #ffffff;
+        color: #9c944f;
     }
     .test-container {
         background-color: #ffffff;
@@ -43,11 +44,21 @@ st.markdown(
         margin: 20px auto;
         border-collapse: collapse;
         width: 100%;
+        background-color: #ffffff;
+        color: #5d79ba;
     }
-    .results-table th, .results-table td {
+    .results-table th {
+        background-color: #9c944f;
+        color: #ffffff;
+        padding: 10px;
+    }
+    .results-table td {
         border: 1px solid #9c944f;
         padding: 8px;
         text-align: center;
+    }
+    .stProgress > div > div > div > div {
+        background-color: #9c944f; /* プログレスバーの色 */
     }
     </style>
     """,
