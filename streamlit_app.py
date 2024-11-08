@@ -58,7 +58,7 @@ st.markdown(
         text-align: center;
     }
     .stProgress > div > div > div > div {
-        background-color: #5d79ba; /* プログレスバーの色 */
+        background-color: #9c944f; /* プログレスバーの色 */
     }
     </style>
     """,
