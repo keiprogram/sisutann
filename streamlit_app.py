@@ -88,6 +88,21 @@ selected_range = st.sidebar.selectbox("出題範囲を選択", ranges)
 # 出題問題数の選択
 num_questions = st.sidebar.slider("出題問題数を選択", 10, 50, 50)
 
+# サイドバーにリンクボタンを追加
+st.sidebar.markdown(
+    """
+    <div style="text-align: center; margin-top: 20px;">
+        <p>こちらのアプリもお試しください</p>
+        <a href="https://sisutann-f5r6e9hvuz3ubw5umd6m4i.streamlit.app/" target="_blank" 
+        style="background-color: #6c757d; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: bold;">
+        アプリを試す
+        </a>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
+
 # 選択した範囲のデータを抽出
 range_start, range_end = map(int, selected_range.split('-'))
 filtered_words_df = words_df[(words_df['No.'] >= range_start) & (words_df['No.'] <= range_end)].sort_values(by='No.')
